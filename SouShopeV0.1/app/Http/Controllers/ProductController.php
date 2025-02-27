@@ -32,6 +32,7 @@ class ProductController extends Controller
         
        public function CreateProduct(Request $request){
         $Product = new Product();
+        // dd($request['sous_categorie_id']);
         $Product->titre = $request['titre'];
         $Product->image= $request['image'];
         $Product->price=$request['price'];
@@ -39,6 +40,7 @@ class ProductController extends Controller
         $Product->quantity=$request['quantity'];
         $Product->description= $request['description'];
         $Product->sous_categorie_id=$request['sous_categorie_id'];
+        $Product->admin_id = 1;
     
         $Product->save();
         return back();
@@ -52,5 +54,28 @@ class ProductController extends Controller
         }
         return back();
 
-}
+    } 
+
+    public function showUpdateForm(Request $request){
+
+        $Product = Product::find($request['id']);
+        
+        return view('UpdateForm',compact('Product'));
+
+    }
+
+    public function updateProduct(Request $request){
+        $Product = Product::find($request['id']);
+        $Product->titre = $request['titre'];
+        $Product->image= $request['image'];
+        $Product->price=$request['price'];
+        $Product->type=$request['type'];
+        $Product->sous_categorie_id=$request['sous_categorie_id'];
+        $Product->quantity=$request['quantity'];
+        $Product->description= $request['description'];
+        $Product->save();
+        return redirect('/admin/Product');
+
+    }
+
 }

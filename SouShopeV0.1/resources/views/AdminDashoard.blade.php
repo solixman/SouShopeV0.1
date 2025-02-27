@@ -3,7 +3,7 @@
 use App\Http\Controllers\SousCategorieController;
 
 $Scategories = new SousCategorieController;
-$sousCategories = $Scategories ->GetAll(); 
+$sousCategories = $Scategories->GetAll();
 
 ?>
 
@@ -100,52 +100,52 @@ $sousCategories = $Scategories ->GetAll();
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                          <form action="/Product/add" method="get" class="w-full">
+                      <form action="/Product/add" method="get" class="w-full">
 
 
-                            <div class="form-element mb-4">
-                              <label for="title" class="block text-gray-700 mb-2">titre</label>
-                              <input type="text" name="titre" required placeholder="titre" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                            </div>
+                        <div class="form-element mb-4">
+                          <label for="title" class="block text-gray-700 mb-2">titre</label>
+                          <input type="text" name="titre" required placeholder="titre" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
 
-                            <div class="form-element mb-4">
-                              <label for="description" class="block text-gray-700 mb-2">image</label>
-                              <input type="text" name="image" required placeholder="image" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                            </div>
-                            
+                        <div class="form-element mb-4">
+                          <label for="description" class="block text-gray-700 mb-2">image</label>
+                          <input type="text" name="image" required placeholder="image" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
 
-                            <div class="form-element mb-4">
-                              <label for="location" class="block text-gray-700 mb-2">price</label>
-                              <input type="text" name="price" required placeholder="0000" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                            </div>
 
-                            <div class="form-element mb-4">
-                              <label for="phone" class="block text-gray-700 mb-2">type</label>
-                              <input type="text" name="type" required placeholder="type" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                            </div>
-                            <div class="form-element mb-4">
-                              <label for="phone" class="block text-gray-700 mb-2">quantity</label>
-                              <input type="text" name="quantity" required placeholder="0000" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                            </div>
-                            
-                            <select class="form-select" aria-label="Default select example">
-  <option name='sous_categorie_id' selected>chose Categorie</option>
-  @foreach($sousCategories as $SCategorie)
-  <option value="{{$SCategorie->id}}">{{$SCategorie -> name}}</option>
-  @endforeach
-</select>
-                            
+                        <div class="form-element mb-4">
+                          <label for="location" class="block text-gray-700 mb-2">price</label>
+                          <input type="text" name="price" required placeholder="0000" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
 
-                            <div class="form-element mb-4">
-                              <label for="images" class="block text-gray-700 mb-2">description</label>
-                              <input type="text" name="description" required placeholder="description" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                            </div>
-                            <div class="flex justify-end space-x-2">
-                              <button type="button" id="closeModal" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Annuler</button>
-                              <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="Publier">
-                            </div>
-                          </form>
-                        
+                        <div class="form-element mb-4">
+                          <label for="phone" class="block text-gray-700 mb-2">type</label>
+                          <input type="text" name="type" required placeholder="type" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
+                        <div class="form-element mb-4">
+                          <label for="phone" class="block text-gray-700 mb-2">quantity</label>
+                          <input type="text" name="quantity" required placeholder="0000" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
+
+                        <select class="form-select" name='sous_categorie_id' aria-label="Default select example">
+                          <option name='sous_categorie_id' selected>chose Categorie</option>
+                          @foreach($sousCategories as $SCategorie)
+                          <option name='sous_categorie_id' value="{{$SCategorie->id}}">{{$SCategorie -> name}}</option>
+                          @endforeach
+                        </select>
+
+
+                        <div class="form-element mb-4">
+                          <label for="images" class="block text-gray-700 mb-2">description</label>
+                          <input type="text" name="description" required placeholder="description" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                        </div>
+                        <div class="flex justify-end space-x-2">
+                          <button type="button" id="closeModal" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">Annuler</button>
+                          <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="Publier">
+                        </div>
+                      </form>
+
 
 
                     </div>
@@ -168,19 +168,19 @@ $sousCategories = $Scategories ->GetAll();
 
                 <div class="row">
                   <div class="col-4">
-                <form action="/Product/update/form" method="get">
-                  <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
-                  <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="Update">
-                </form>
+                    <form action="/Product/update/form" method="get">
+                      <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
+                      <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="Update">
+                    </form>
+                  </div>
+                  <div class="col-4">
+                    <form action="/Product/delete" method="get">
+                      <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
+                      <input type="submit" name="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600" value="Delete">
+
+                    </form>
+                  </div>
                 </div>
-                <div class="col-4">
-                <form action="/Product/delete" method="get">
-                  <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
-                  <input type="submit" name="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600" value="Delete">
-                    
-                </form>
-                </div>
-               </div>
 
               </div>
             </div>
