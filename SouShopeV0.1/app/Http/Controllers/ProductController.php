@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
         $Products = Product::get(); 
         return view('AdminDashoard',compact('Products'));
         }{
-            redirect('/user/cant');
+            return view('403Page');
         }
     }
 
@@ -27,7 +28,7 @@ class ProductController extends Controller
     public function ShowProductDetails(Request $request){
         $Product = Product::find($request['id']);
         
-        return view('Product',compact('product'));
+        return view('Product',compact('Product'));
     }
 
     public function ShowOneProduct(Request $request){
@@ -82,5 +83,10 @@ class ProductController extends Controller
         return redirect('/admin/Product');
 
     }
+    // public function AddProductToSession(Request $request){
+    //     $Product = $request['ProductId'];
+    //     $Quantity = $request['Quantity'];
+    //     Session
+    // }
 
 }

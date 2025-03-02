@@ -67,19 +67,9 @@
 
                   <div class="row">
                     <div class="col-4">
-                      <form action="/Product/update/form" method="get">
-                        <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
-                        <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="Update">
-                      </form>
-                    </div>
-                    <div class="col-4">
-                      <form action="/Product/delete" method="get">
-                        <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
-                        <input type="submit" name="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600" value="Delete">
-                      </form>
-
+                     
                       <form action="/Product/details" method="get">
-                  <input type="hidden" id="salle_id" class="fadeIn second" name="id" placeholder="id" value="{{ $salle->id }}">
+                  <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
                   <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="reserve">
                 </form>
 
