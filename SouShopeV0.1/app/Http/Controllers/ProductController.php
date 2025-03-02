@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 
 class ProductController extends Controller
 {
     public function ShowProductsforAdmin(){
-        $Products = Product::get();
-        
+        $user=User::find(1);
+        if($user->HasPermissionto('admin')){
+        $Products = Product::get(); 
         return view('AdminDashoard',compact('Products'));
+        }{
+            redirect('/user/cant');
+        }
     }
 
     public function ShowProductsforClient(){
