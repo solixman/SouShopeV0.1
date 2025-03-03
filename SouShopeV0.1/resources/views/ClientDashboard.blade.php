@@ -60,17 +60,18 @@
               <div class="card" style="width: 23rem; background-color:rgba(233, 227, 227, 0.5); border: 2px; ">
                 <img src="{{ $Product->image }}" class="card-img-top" alt="Product">
                 <div class="card-body">
-                  <h5 class="card-title">{{ $Product->titre }}</h5>
-                  <p class="card-text">Price: {{ $Product->price }}</p>
-                  <p>Type: {{ $Product->type }}</p>
-                  <p>InStock: {{ $Product->quantityInStock }}</p>
-
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-md-4">
+                  <h5 class="card-title">{{ $Product->titre }}</h5></div>
+                  <div class="col-md-4"></div>
+                  <p class="card-text">Price: {{ $Product->price }}</p>
+                  </div>
+                  <div class="row">
+                  <div class="col-4">
                      
                       <form action="/Product/details" method="get">
                   <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
-                  <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="reserve">
+                  <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="see details">
                 </form>
 
                     </div>

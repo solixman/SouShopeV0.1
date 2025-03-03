@@ -19,8 +19,8 @@
             <p class="card-text"><strong>Description:</strong> {{ $Product->description }}</p>
         </div>
         <div class="card-footer">
-            <a href="/client/salle" class="btn btn-secondary">retourne au catalog des salles</a>
-            <a href="/salle/reserve" class="btn btn-primary">Buy Now</a>
+            <a href="/client/Product" class="btn btn-secondary">retourne au catalog des Products</a>
+            <a href="/Product/add/cart" class="btn btn-primary">Buy Now</a>
         </div>
     </div>
 </div>

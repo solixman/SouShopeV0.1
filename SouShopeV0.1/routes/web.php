@@ -54,4 +54,8 @@ Route::get('/AddProduct', function () {
 });
 
 
-Route::get('/Test/add',[ProductController::class, 'ShowProductDetails']);
+// Route::get('/Test/add',[ProductController::class, 'ShowProductDetails']);
+
+Route::get('/Product/add/cart',[ProductController::class, 'AddProductToSession']);
+Route::get('/cart',[ProductController::class, 'ProductsTocart']);
+Route::get('/Product/delete/cart',[ProductController::class, 'RemoveFromCart']);
