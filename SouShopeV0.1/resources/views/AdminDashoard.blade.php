@@ -174,7 +174,7 @@ $sousCategories = $Scategories->GetAll();
                     </form>
                   </div>
                   <div class="col-4">
-                    <form action="/Product/delete" method="get">
+                    <form action="/Product/delete/cart" method="get">
                       <input type="hidden" id="Product_id" class="fadeIn second" name="id" placeholder="id" value="{{ $Product->id }}">
                       <input type="submit" name="submit" class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600" value="Delete">
 
