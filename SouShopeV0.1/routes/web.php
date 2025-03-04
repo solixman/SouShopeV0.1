@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -59,3 +60,4 @@ Route::get('/AddProduct', function () {
 Route::get('/Product/add/cart',[ProductController::class, 'AddProductToSession']);
 Route::get('/cart',[ProductController::class, 'ProductsTocart']);
 Route::get('/Product/delete/cart',[ProductController::class, 'RemoveFromCart']);
+Route::get('/checkout',[OrderController::class,'checkout']);

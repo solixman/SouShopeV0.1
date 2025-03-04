@@ -53,7 +53,16 @@
 
         <div class="space-y-6">
           <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="row">
+              <div class="col-md-10">
             <h1>Available Product</h1>
+          </div>
+          <div class="col-md-2">
+          <form action="/cart" method="get">
+                  <input type="submit" name="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600" value="cart">
+                </form>
+          </div>
+          </div>
             <div class="div" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
               @foreach($Products as $Product)
 
