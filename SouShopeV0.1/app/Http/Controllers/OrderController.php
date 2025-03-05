@@ -16,20 +16,24 @@ class OrderController extends Controller
     $order= new Order();
     $user=User::find(1);
     $order->user_id=$user->id ;
-    $order->status='en cours';
+    $order->status='pending';
     $order->orderDate=now();
     $order->address_id=1;
-    $order->save();
+    $order->total=0;
+    
     $cart=Session::get('cart');
     foreach($cart as $cart){
         $OP=new Order_product;
         $OP->quantity=$cart['quantity'];
         $OP->priceAtMoment  =$cart['price'];
         $OP->product_id=$cart['id'];
+        $OP->subtotal=$cart['price']*$cart['quantity'];
         $OP->order_id=$order->id;
         $OP->save();
+        $order->Total = $order->Total + $OP->subtotal;
     }
-    OrderController::ShowOneOrder($order->id);
+$order->save();
+    return view('Order',compact('order'));
     }
 
     public function ShowMyOders(){
@@ -38,9 +42,10 @@ class OrderController extends Controller
         
     }
     
-    public function ShowOneOrder($id){
-       $order= Order::find($id);
-        return view('OrderPage',compact('order'));
-
-    }
+    // public function ShowOneOrder($id){
+    //     echo'here';
+    //    $order= Order::find($id);
+      
+    //     return view('OrderPage', compact('order'));
+    // }
 }

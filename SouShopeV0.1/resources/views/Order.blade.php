@@ -72,18 +72,7 @@
 
             <div class="order-details">
                 <div class="row">
-                    <div class="col-md-6">
-                        <h4 class="section-title">Customer Information</h4>
-                        <div class="detail-row">
-                            <strong>Name:</strong> {{ $order->customer_name }}
-                        </div>
-                        <div class="detail-row">
-                            <strong>Email:</strong> {{ $order->customer_email }}
-                        </div>
-                        <div class="detail-row">
-                            <strong>Phone:</strong> {{ $order->customer_phone }}
-                        </div>
-                    </div>
+                    
 
                     <div class="col-md-6">
                         <h4 class="section-title">Order Summary</h4>
@@ -108,35 +97,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($order->items as $item)
+                            @foreach($order->Order_products as $item)
                             <tr>
-                                <td>{{ $item->product_name }}</td>
+                                <td>{{ $item->name }}</td>
                                 <td>{{ $item->quantity }}</td>
-                                <td>${{ number_format($item->unit_price, 2) }}</td>
-                                <td>${{ number_format($item->quantity * $item->unit_price, 2) }}</td>
+                                <td>${{ $item->priceAtMoment }}</td>
+                                <td>${{ $item->subtotal }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr class="total-row">
                                 <td colspan="3" class="text-end">Total:</td>
-                                <td>${{ number_format($order->total_amount, 2) }}</td>
+                                <td>${{ number_format($order->Total, 2) }}</td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
 
-                @if($order->notes)
-                <div class="mt-4">
-                    <h4 class="section-title">Order Notes</h4>
-                    <div class="alert alert-light">
-                        {{ $order->notes }}
-                    </div>
-                </div>
-                @endif
+          
+              
 
                 <div class="text-center mt-4">
-                    <a href="{{ route('orders.index') }}" class="btn btn-secondary me-2">Back to Orders</a>
+                    <a href="Client/Orders" class="btn btn-secondary me-2">Show all orders</a>
                     @if($order->status == 'pending')
                         <button class="btn btn-primary">Process Order</button>
                     @endif
