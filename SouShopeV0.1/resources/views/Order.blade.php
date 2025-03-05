@@ -4,131 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details - #{{ $order->id }}</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f4f6f9;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
-        .order-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .hover\:scale-105:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
-        .order-header {
-            background-color: #007bff;
-            color: white;
-            padding: 1.5rem;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        .status-badge {
-            font-size: 0.9rem;
-            margin-left: 10px;
-        }
-        .order-details {
-            background-color: white;
-            padding: 2rem;
-        }
-        .section-title {
-            color: #495057;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .detail-row {
-            margin-bottom: 10px;
-        }
-        .order-items-table {
-            margin-top: 20px;
-        }
-        .total-row {
-            font-weight: bold;
-            background-color: #f8f9fa;
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div class="order-container">
-            <div class="order-header d-flex justify-content-between align-items-center">
-                <h2 class="mb-0">Order Details</h2>
-                <div>
-                    <span>Order #{{ $order->id }}</span>
-                    <span class="badge 
+<body class="antialiased">
+    <div class="container mx-auto p-6 max-w-4xl">
+        <div class="bg-white shadow-2xl rounded-2xl overflow-hidden animate-fade-in">
+            <div class="bg-gradient-to-r from-blue-500 to-blue-700 text-white p-6 flex justify-between items-center">
+                <h2 class="text-3xl font-bold">Order Details</h2>
+                <div class="flex items-center">
+                    <span class="text-lg">Order #{{ $order->id }}</span>
+                    <span class="ml-3 px-3 py-1 text-xs font-semibold rounded-full 
                         @switch($order->status)
-                            @case('pending') bg-warning @break
-                            @case('processing') bg-info @break
-                            @case('completed') bg-success @break
-                            @case('cancelled') bg-danger @break
-                            @default bg-secondary
-                        @endswitch
-                        status-badge">
+                            @case('pending') bg-yellow-400 text-yellow-900 @break
+                            @case('processing') bg-blue-400 text-blue-900 @break
+                            @case('completed') bg-green-500 text-green-900 @break
+                            @case('cancelled') bg-red-500 text-red-100 @break
+                            @default bg-gray-500 text-white
+                        @endswitch">
                         {{ ucfirst($order->status) }}
                     </span>
                 </div>
             </div>
 
-            <div class="order-details">
-                <div class="row">
-                    
-
-                    <div class="col-md-6">
-                        <h4 class="section-title">Order Summary</h4>
-                        <div class="detail-row">
-                            <strong>Order Date:</strong> {{ $order->orderDate->format('M d, Y') }}
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-700 border-b-2 border-gray-300 pb-2">Order Summary</h4>
+                        <div class="mt-2">
+                            <strong>Order Date:</strong> <span class="text-gray-600">{{ $order->orderDate->format('M d, Y') }}</span>
                         </div>
-                        <div class="detail-row">
-                            <strong>Total Amount:</strong> ${{ number_format($order->total_amount, 2) }}
+                        <div class="mt-2">
+                            <strong>Total Amount:</strong> <span class="text-gray-600">${{ number_format($order->Total, 2) }}</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="order-items-table">
-                    <h4 class="section-title">Order Items</h4>
-                    <table class="table table-striped">
+                <div class="mt-6">
+                    <h4 class="text-xl font-semibold text-gray-700 border-b-2 border-gray-300 pb-2">Order Items</h4>
+                    <table class="min-w-full mt-4 bg-white border border-gray-300 rounded-lg overflow-hidden">
                         <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Unit Price</th>
-                                <th>Subtotal</th>
+                            <tr class="bg-gray-200">
+                                <th class="py-3 px-4 border">Product</th>
+                                <th class="py-3 px-4 border">Quantity</th>
+                                <th class="py-3 px-4 border">Unit Price</th>
+                                <th class="py-3 px-4 border">Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($order->Order_products as $item)
-                            <tr>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->quantity }}</td>
-                                <td>${{ $item->priceAtMoment }}</td>
-                                <td>${{ $item->subtotal }}</td>
+                            <tr class="hover:bg-gray-100 transition duration-200">
+                                <td class="py-2 px-4 border">{{ $item->product->titre }}</td>
+                                <td class="py-2 px-4 border">{{ $item->quantity }}</td>
+                                <td class="py-2 px-4 border">${{ number_format($item->priceAtMoment, 2) }}</td>
+                                <td class="py-2 px-4 border">${{ number_format($item->subtotal, 2) }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
-                            <tr class="total-row">
-                                <td colspan="3" class="text-end">Total:</td>
-                                <td>${{ number_format($order->Total, 2) }}</td>
+                            <tr class="bg-gray-100 font-bold">
+                                <td colspan="3" class="py-2 px-4 text-right">Total:</td>
+                                <td class="py-2 px-4">${{ number_format($order->Total, 2) }}</td>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
 
-          
-              
-
-                <div class="text-center mt-4">
-                    <a href="Client/Orders" class="btn btn-secondary me-2">Show all orders</a>
-                    @if($order->status == 'pending')
-                        <button class="btn btn-primary">Process Order</button>
-                    @endif
+                <div class="text-center mt-6">
+                    <div class="flex justify-between">
+                        <a href="Client/Orders" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-200">Show all orders</a>
+                        <div>
+                            @if($order->status == 'pending')
+                            <form action="/process/order" method="POST">
+                                <input type="hidden" name="order_id" value="{{ $order->id }}">
+                                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">Process Order</button>
+                            </form>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS (Optional) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Optional: Add a footer -->
+    <footer class="bg-gray-800 text-white text-center py-4 mt-6">
+        <p>&copy; {{ date('Y') }} Solixman. All rights reserved.</p>
+    </footer>
 </body>
 </html>

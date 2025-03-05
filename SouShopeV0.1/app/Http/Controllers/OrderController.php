@@ -14,25 +14,27 @@ class OrderController extends Controller
  
     public function checkout(){
     $order= new Order();
-    // $user=User::find(1);
-    $order->user_id=1 ;
+    $user=User::find(1);
+    $order->user_id=$user->id ;
     $order->status='pending';
     $order->orderDate=now();
     $order->address_id=1;
     $order->total=0;
-    
+    $order->save();
     $cart=Session::get('cart');
+
     foreach($cart as $cart){
         $OP=new Order_product;
         $OP->quantity=$cart['quantity'];
         $OP->priceAtMoment  =$cart['price'];
         $OP->product_id=$cart['id'];
         $OP->subtotal=$cart['price']*$cart['quantity'];
-        $OP->order_id=1;
+        $OP->order_id=$order->id;
         $OP->save();
+        // dd($OP->product);
         $order->Total = $order->Total + $OP->subtotal;
     }
-$order->save();
+    // $order->save();
     return view('Order',compact('order'));
     }
 
@@ -40,6 +42,13 @@ $order->save();
         $user=User::find(1);
         var_dump($user->Orders);
         
+    }
+
+
+    public function ProcessOrder(){
+
+        
+
     }
     
     // public function ShowOneOrder($id){

@@ -24,6 +24,9 @@ public function Admin(){
 public function sous_Categorie(){
     return $this->hasone(Sous_Categorie::class);
 }
+public function Order_products(){
+    return $this->hasmany(Order_product::class);
+}
 
 
 }

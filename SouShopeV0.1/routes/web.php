@@ -62,3 +62,4 @@ Route::get('/cart',[ProductController::class, 'ProductsTocart']);
 Route::get('/Product/delete/cart',[ProductController::class, 'RemoveFromCart']);
 Route::get('/checkout',[OrderController::class,'checkout']);
 Route::get('/client/orders',[OrderController::class],'ShowMyOders');
+route::get('/process/order',[OrderController::class],'ProcessOrder');
