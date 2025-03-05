@@ -11,7 +11,7 @@ class Order_product extends Model
 
     protected $fillable=[
         'quantity',
-        'nowPrice',
+        'priceAtMoment',
         
     ];
     

@@ -144,6 +144,7 @@ class ProductController extends Controller
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
+                "id"=> $product->id,
                 "name" => $product->titre,
                 "quantity" => 1,
                 "price" => $product->price,
