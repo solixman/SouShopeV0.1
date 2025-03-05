@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('orderDate');
             $table->integer('address_id');
             $table->foreign('address_id')->references('id')->on('address');
+            $table->float('total');
             $table->timestamps();
             
         });

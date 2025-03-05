@@ -14,8 +14,8 @@ class OrderController extends Controller
  
     public function checkout(){
     $order= new Order();
-    $user=User::find(1);
-    $order->user_id=$user->id ;
+    // $user=User::find(1);
+    $order->user_id=1 ;
     $order->status='pending';
     $order->orderDate=now();
     $order->address_id=1;
@@ -28,7 +28,7 @@ class OrderController extends Controller
         $OP->priceAtMoment  =$cart['price'];
         $OP->product_id=$cart['id'];
         $OP->subtotal=$cart['price']*$cart['quantity'];
-        $OP->order_id=$order->id;
+        $OP->order_id=1;
         $OP->save();
         $order->Total = $order->Total + $OP->subtotal;
     }

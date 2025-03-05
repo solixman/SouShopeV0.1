@@ -77,7 +77,7 @@
                     <div class="col-md-6">
                         <h4 class="section-title">Order Summary</h4>
                         <div class="detail-row">
-                            <strong>Order Date:</strong> {{ $order->created_at->format('M d, Y') }}
+                            <strong>Order Date:</strong> {{ $order->orderDate->format('M d, Y') }}
                         </div>
                         <div class="detail-row">
                             <strong>Total Amount:</strong> ${{ number_format($order->total_amount, 2) }}
