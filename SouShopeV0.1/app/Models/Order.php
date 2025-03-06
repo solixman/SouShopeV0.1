@@ -11,12 +11,12 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'date',
+        'orderDate',
         'status'
     ];
     
-    public function Client(){
-        return $this->hasone(User::class);
+    public function User(){
+        return $this->belongsTo(User::class);
     }
     public function Order_products(){
         return $this->hasmany(Order_product::class);

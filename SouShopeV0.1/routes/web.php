@@ -62,4 +62,9 @@ Route::get('/cart',[ProductController::class, 'ProductsTocart']);
 Route::get('/Product/delete/cart',[ProductController::class, 'RemoveFromCart']);
 Route::get('/checkout',[OrderController::class,'checkout']);
 Route::get('/client/orders',[OrderController::class],'ShowMyOders');
-route::get('/process/order',[OrderController::class],'ProcessOrder');
+Route::get('/process/order',[OrderController::class, 'ProcessOrder']);
+
+Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
+Route::post('/orders/{id}/update-status', [OrderController::class, 'updateOrderStatus'])->name('orders.updateStatus');
+Route::get('/Admin/Orders',[OrderController::class,'ShowAllorders']);
+Route::get('/ClientOrders',[OrderController::class,'ShowAllordersClient']);

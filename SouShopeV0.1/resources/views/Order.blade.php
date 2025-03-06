@@ -92,7 +92,7 @@
                         <a href="Client/Orders" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-200">Show all orders</a>
                         <div>
                             @if($order->status == 'pending')
-                            <form action="/process/order" method="POST">
+                            <form action="/process/order" method="get">
                                 <input type="hidden" name="order_id" value="{{ $order->id }}">
                                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">Process Order</button>
                             </form>

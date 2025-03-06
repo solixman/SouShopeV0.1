@@ -45,11 +45,38 @@ class OrderController extends Controller
     }
 
 
-    public function ProcessOrder(){
-
-        
-
+    public function ProcessOrder(Request $request){
+  
+        $order = Order::find($request['order_id']);
+    return view('Payement', compact('order'));
     }
+
+
+
+
+    public function ShowAllorders(){
+      $orders=Order::with('User')->get();
+    //   dd($orders);
+      return view('AdminOrders',compact('orders'));
+    }
+
+    public function cancelOrder($id)
+{
+    $order = Order::findOrFail($id);
+    $order->status = 'cancelled';
+    $order->save();
+
+    return redirect()->back()->with('success', 'Order cancelled successfully.');
+}
+
+public function updateOrderStatus(Request $request, $id)
+{
+    $order = Order::findOrFail($id);
+    $order->status = $request->input('status');
+    $order->save();
+
+    return redirect()->back()->with('success', 'Order status updated successfully.');
+}
     
     // public function ShowOneOrder($id){
     //     echo'here';
