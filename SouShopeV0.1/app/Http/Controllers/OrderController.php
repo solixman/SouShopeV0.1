@@ -60,13 +60,26 @@ class OrderController extends Controller
       return view('AdminOrders',compact('orders'));
     }
 
+    public function ShowAllordersClient(){
+       $user=User::find(1);
+        $orders=Order::where('user_id',$user->id)->get();
+        return view('ClientOrders',compact('orders'));
+    }
+
     public function cancelOrder($id)
-{
+{   
     $order = Order::findOrFail($id);
+
+    if($order->status == 'completed'){
+      
+        return back()->with('error','Order already completed');
+        
+    }else if($order->status != 'completed'){
+        
     $order->status = 'cancelled';
     $order->save();
-
     return redirect()->back()->with('success', 'Order cancelled successfully.');
+    }
 }
 
 public function updateOrderStatus(Request $request, $id)

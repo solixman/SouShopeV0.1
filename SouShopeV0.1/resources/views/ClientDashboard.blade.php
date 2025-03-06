@@ -27,16 +27,16 @@
         <nav class="mt-6 px-4">
           <a href="#" class="flex items-center px-4 py-3 text-gray-700 bg-indigo-50 rounded-lg mb-2">
             <i class="bi bi-house-door mr-3 text-lg"></i>
-            <span>Dashboard</span>
+            <span>Our Products</span>
           </a>
-          <a href="/Client/reservations" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
+          <a href="/Client/reservatios" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
             <i class="bi bi-tag mr-3 text-lg"></i>
-            <span>Products</span>
+            <span>Profile</span>
           </a>
 
-          <a href="/Categories" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
+          <a href="/Client/Orders" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
             <i class="bi bi-folder mr-3 text-lg"></i>
-            <span>Profile</span>
+            <span>Orders</span>
           </a>
 
 

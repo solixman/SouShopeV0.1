@@ -67,4 +67,4 @@ Route::get('/process/order',[OrderController::class, 'ProcessOrder']);
 Route::delete('/orders/{id}/cancel', [OrderController::class, 'cancelOrder'])->name('orders.cancel');
 Route::post('/orders/{id}/update-status', [OrderController::class, 'updateOrderStatus'])->name('orders.updateStatus');
 Route::get('/Admin/Orders',[OrderController::class,'ShowAllorders']);
-Route::get('/ClientOrders',[OrderController::class,'ShowAllordersClient']);
+Route::get('/Client/Orders',[OrderController::class,'ShowAllordersClient']);

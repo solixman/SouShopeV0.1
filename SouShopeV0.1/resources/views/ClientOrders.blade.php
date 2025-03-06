@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Bootstrap Icons (optional, if you want to use icons) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body class="bg-gray-100">
     <div class="flex min-h-screen">
@@ -18,32 +19,46 @@
                 <span class="text-xl font-bold text-indigo-600">Dashboard</span>
             </div>
             <nav class="mt-6 px-4">
+                
+                <a href="/client/Product" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
+                    <i class="bi bi-star mr-3 text-lg"></i>
+                    <span>Our Products</span>
+                </a>
+                <a href="/Client/Orders" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
+                    <i class="bi bi-tag mr-3 text-lg"></i>
+                    <span>Profile</span>
+                </a>
                 <a href="#" class="flex items-center px-4 py-3 text-gray-700 bg-indigo-50 rounded-lg mb-2">
                     <i class="bi bi-house-door mr-3 text-lg"></i>
-                    <span>Products</span>
-                </a>
-                <a href="/admin/users" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
-                    <i class="bi bi-star mr-3 text-lg"></i>
-                    <span>Users</span>
-                </a>
-                <a href="/Admin/Orders" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
-                    <i class="bi bi-tag mr-3 text-lg"></i>
                     <span>Orders</span>
                 </a>
             </nav>
         </div>
-
-        <!-- Main Content -->
+        
         <div class="flex-1 ml-64 p-6">
             <h1 class="text-3xl font-bold mb-6">All Orders</h1>
+              @if(session('success'))
+        <div class="row">
+        <div class="alert alert-success">{{ session('success') }}</div></div>
+        @endif
+
+@if(session('error'))
+<div class="row">
+<div class="alert alert-danger">{{ session('error') }}</div></div>
+@endif
             <div class="bg-white shadow-md rounded-lg overflow-hidden">
+               
+        
+            
+        <!-- Main Content -->
+        
                 <table class="min-w-full bg-white">
                     <thead>
                         <tr class="bg-gray-200">
                             <th class="py-3 px-4 border">Order ID</th>
                             <th class="py-3 px-4 border">Order Date</th>
                             <th class="py-3 px-4 border">Status</th>
-                            <th class="py-3 px-4 border">Actions</th>
+                            <th class="py-3 px-3 border">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,12 +85,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Cancel</button>
                                 </form>
-                            <form action="{{ route('orders.cancel', $order->id) }}" method="POST" class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Cancel</button>
-                                </form>
-                                <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST" class="inline">
+                                <!-- <form action="{{ route('orders.updateStatus', $order->id) }}" method="POST" class="inline">
                                     @csrf
                                     <select name="status" class="border rounded px-2 py-1">
                                         <option value="pending" {{ $order->status == 'pending' ? 'selected' : '' }}>Pending</option>
@@ -84,7 +94,7 @@
                                         <option value="cancelled" {{ $order->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                                     </select>
                                     <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Update</button>
-                                </form>
+                                </form> -->
                             </td>
                         </tr>
                         @endforeach
@@ -93,5 +103,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>
