@@ -14,13 +14,13 @@ class ProductController extends Controller
 {
     public function ShowProductsforAdmin()
     {
-        $user = User::find(1);
-        if ($user->HasPermissionto('admin')) {
+        // $user = User::find(1);
+        // if ($user->HasPermissionto('admin')) {
             $Products = Product::get();
             return view('AdminDashoard', compact('Products'));
-        } {
-            return view('403Page');
-        }
+        // } {
+            // return view('403Page');
+        // }
     }
 
     public function ShowProductsforClient()
@@ -144,6 +144,7 @@ class ProductController extends Controller
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
+                "id"=> $product->id,
                 "name" => $product->titre,
                 "quantity" => 1,
                 "price" => $product->price,

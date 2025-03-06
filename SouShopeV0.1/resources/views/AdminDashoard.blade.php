@@ -44,35 +44,12 @@ $sousCategories = $Scategories->GetAll();
             <span>Users</span>
           </a>
 
-          <a href="/Admin/Tag" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
+          <a href="/Admin/Orders" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
             <i class="bi bi-tag mr-3 text-lg"></i>
-            <span>Tags</span>
+            <span>Orders</span>
           </a>
 
-          <a href="Admin/Categories" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
-            <i class="bi bi-folder mr-3 text-lg"></i>
-            <span>Categories</span>
-          </a>
-
-          <a href="/Admin/Projects" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
-            <i class="bi bi-briefcase mr-3 text-lg"></i>
-            <span>Project</span>
-          </a>
-
-          <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
-            <i class="bi bi-bell mr-3 text-lg"></i>
-            <span>Notifications</span>
-          </a>
-
-          <a href="#" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
-            <i class="bi bi-chat mr-3 text-lg"></i>
-            <span>Chat</span>
-          </a>
-          <a href="/Auth/logout" class="flex items-center px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-lg mb-2 transition-colors">
-            <i class="bi bi-box-arrow-right mr-3 text-lg"></i>
-            <span>Logout</span>
-          </a>
-
+         
         </nav>
       </div>
 

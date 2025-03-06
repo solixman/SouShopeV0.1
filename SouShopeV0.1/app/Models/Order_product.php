@@ -11,12 +11,12 @@ class Order_product extends Model
 
     protected $fillable=[
         'quantity',
-        'nowPrice',
+        'priceAtMoment',
         
     ];
     
     public function product(){
-        return $this->hasone(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
     public function order(){

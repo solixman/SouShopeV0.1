@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('order_id')->references('id')->on('orders');
             $table->integer('quantity');
             $table->float('priceAtMoment');
+            $table->float('subtotal');
             $table->timestamps();
         });
     }
